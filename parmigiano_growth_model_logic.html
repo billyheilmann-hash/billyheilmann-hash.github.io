@@ -1,0 +1,229 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&display=swap');
+:root {
+  --sf-black: #202020;
+  --sf-white: #ffffff;
+  --sf-red: #e94543;
+  --sf-teal: #49bdbf;
+  --sf-gray: #A9A9A9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: transparent; }
+.wrap { font-family: 'Barlow', Arial, sans-serif; background: #202020; color: #fff; padding: 28px 24px 32px; border-radius: 12px; }
+.eyebrow { font-size: 11px; font-weight: 600; color: #e94543; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px; }
+.hero { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1.0; margin-bottom: 24px; }
+.hero span { color: #e94543; }
+.section-label { font-size: 10px; font-weight: 600; color: #e94543; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 10px; }
+.equation { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.eq-box { background: #2D2D2D; border: 0.5px solid #444; border-radius: 8px; padding: 10px 14px; text-align: center; cursor: pointer; transition: border-color .2s; }
+.eq-box:hover { border-color: #e94543; }
+.eq-box .label { font-size: 10px; font-weight: 600; color: #A9A9A9; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+.eq-box .val { font-size: 14px; font-weight: 700; color: #fff; }
+.eq-box.highlight .val { color: #e94543; }
+.eq-op { font-size: 18px; font-weight: 600; color: #49bdbf; }
+.lever-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+.lever { background: #2D2D2D; border: 0.5px solid #444; border-radius: 8px; padding: 14px; cursor: pointer; transition: border-color .2s, background .2s; }
+.lever:hover { border-color: #e94543; background: #333; }
+.lever .lever-label { font-size: 11px; font-weight: 600; color: #A9A9A9; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+.lever .lever-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.lever .lever-sub { font-size: 12px; font-weight: 400; color: #A9A9A9; line-height: 1.4; }
+.lever .lever-metric { font-size: 18px; font-weight: 800; color: #e94543; margin-bottom: 2px; }
+.lever.active { border-color: #e94543; background: #2a1f1f; }
+.detail-panel { background: #2D2D2D; border: 0.5px solid #e94543; border-radius: 8px; padding: 16px; margin-bottom: 28px; display: none; }
+.detail-panel.visible { display: block; }
+.detail-panel .dp-title { font-size: 13px; font-weight: 700; color: #e94543; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.6px; }
+.detail-panel .dp-rows { display: flex; flex-direction: column; gap: 8px; }
+.detail-panel .dp-row { display: flex; justify-content: space-between; align-items: baseline; }
+.detail-panel .dp-key { font-size: 12px; color: #A9A9A9; }
+.detail-panel .dp-val { font-size: 13px; font-weight: 600; color: #fff; }
+.sim-section { margin-top: 4px; }
+.sim-label { font-size: 11px; font-weight: 600; color: #A9A9A9; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; }
+.sim-sliders { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.sim-row { display: flex; align-items: center; gap: 10px; }
+.sim-row label { font-size: 12px; color: #A9A9A9; min-width: 130px; }
+.sim-row input[type=range] { flex: 1; accent-color: #e94543; }
+.sim-row .sim-val { font-size: 12px; font-weight: 700; color: #e94543; min-width: 38px; text-align: right; }
+.result-bar { background: #2D2D2D; border-radius: 8px; padding: 16px; display: flex; gap: 24px; align-items: center; }
+.result-num { font-size: 36px; font-weight: 800; color: #e94543; letter-spacing: -0.5px; }
+.result-label { font-size: 12px; color: #A9A9A9; margin-top: 2px; }
+.result-breakdown { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.rb-row { display: flex; justify-content: space-between; font-size: 11px; }
+.rb-key { color: #A9A9A9; }
+.rb-val { color: #fff; font-weight: 600; }
+.divider { border: none; border-top: 0.5px solid #333; margin: 20px 0; }
+</style>
+<div class="wrap">
+  <div class="eyebrow">Parmigiano Reggiano US</div>
+  <div class="hero">30% growth — <span>model logic</span></div>
+
+  <div class="section-label">The core equation</div>
+  <div class="equation">
+    <div class="eq-box highlight">
+      <div class="label">Volume</div>
+      <div class="val">= Households</div>
+    </div>
+    <div class="eq-op">×</div>
+    <div class="eq-box">
+      <div class="label">Purchase</div>
+      <div class="val">Frequency</div>
+    </div>
+    <div class="eq-op">×</div>
+    <div class="eq-box">
+      <div class="label">Units per</div>
+      <div class="val">Trip</div>
+    </div>
+    <div class="eq-op">×</div>
+    <div class="eq-box">
+      <div class="label">Price</div>
+      <div class="val">per Unit</div>
+    </div>
+  </div>
+  <div style="font-size:12px;color:#A9A9A9;margin-top:-20px;margin-bottom:24px;">30% revenue growth = any combination of these four levers moving in your favor</div>
+
+  <div class="section-label">The four growth levers — click to explore</div>
+  <div class="lever-grid">
+    <div class="lever" id="l1" onclick="showDetail('penetration')">
+      <div class="lever-label">Lever 1</div>
+      <div class="lever-metric">~8%</div>
+      <div class="lever-title">Household penetration</div>
+      <div class="lever-sub">Est. US households currently buying. Main growth engine — more new buyers.</div>
+    </div>
+    <div class="lever" id="l2" onclick="showDetail('frequency')">
+      <div class="lever-label">Lever 2</div>
+      <div class="lever-metric">4–6×</div>
+      <div class="lever-title">Purchase frequency</div>
+      <div class="lever-sub">Times per year a current buyer purchases. Occasion expansion moves this.</div>
+    </div>
+    <div class="lever" id="l3" onclick="showDetail('basket')">
+      <div class="lever-label">Lever 3</div>
+      <div class="lever-metric">~200g</div>
+      <div class="lever-title">Basket / pack size</div>
+      <div class="lever-sub">Average weight per trip. Club channel and recipe content can drive this up.</div>
+    </div>
+    <div class="lever" id="l4" onclick="showDetail('price')">
+      <div class="lever-label">Lever 4</div>
+      <div class="lever-metric">$25–30/lb</div>
+      <div class="lever-title">Price per unit</div>
+      <div class="lever-sub">PDO premium. Protecting price while growing volume is the key tension.</div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-penetration">
+    <div class="dp-title">Lever 1: Household penetration</div>
+    <div class="dp-rows">
+      <div class="dp-row"><span class="dp-key">What to measure</span><span class="dp-val">% US HH buying in 12 months</span></div>
+      <div class="dp-row"><span class="dp-key">Estimated baseline</span><span class="dp-val">~8% (~10.5M households)</span></div>
+      <div class="dp-row"><span class="dp-key">Target for 30% growth</span><span class="dp-val">Move to ~10–11% HH</span></div>
+      <div class="dp-row"><span class="dp-key">Primary data source</span><span class="dp-val">IRI / Circana panel data</span></div>
+      <div class="dp-row"><span class="dp-key">Media implication</span><span class="dp-val">Reach-focused, trial-driving creative</span></div>
+      <div class="dp-row"><span class="dp-key">Key sub-metric</span><span class="dp-val">Lapsed buyer win-back rate</span></div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-frequency">
+    <div class="dp-title">Lever 2: Purchase frequency</div>
+    <div class="dp-rows">
+      <div class="dp-row"><span class="dp-key">What to measure</span><span class="dp-val">Average trips/year per buyer</span></div>
+      <div class="dp-row"><span class="dp-key">Estimated baseline</span><span class="dp-val">4–6 trips/year</span></div>
+      <div class="dp-row"><span class="dp-key">Target for 30% growth</span><span class="dp-val">+1 to +2 trips/year</span></div>
+      <div class="dp-row"><span class="dp-key">Primary data source</span><span class="dp-val">Retailer loyalty card data</span></div>
+      <div class="dp-row"><span class="dp-key">Media implication</span><span class="dp-val">Occasion content — snacking, aperitivo</span></div>
+      <div class="dp-row"><span class="dp-key">Key sub-metric</span><span class="dp-val">Repurchase rate within 60 days</span></div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-basket">
+    <div class="dp-title">Lever 3: Pack / basket size</div>
+    <div class="dp-rows">
+      <div class="dp-row"><span class="dp-key">What to measure</span><span class="dp-val">Avg grams or oz per purchase</span></div>
+      <div class="dp-row"><span class="dp-key">Estimated baseline</span><span class="dp-val">~200g (wedge format)</span></div>
+      <div class="dp-row"><span class="dp-key">Target for 30% growth</span><span class="dp-val">+15–20% avg pack weight</span></div>
+      <div class="dp-row"><span class="dp-key">Primary data source</span><span class="dp-val">Sell-out scanner data by SKU</span></div>
+      <div class="dp-row"><span class="dp-key">Media implication</span><span class="dp-val">Recipe content, club channel push</span></div>
+      <div class="dp-row"><span class="dp-key">Key sub-metric</span><span class="dp-val">Club SKU velocity vs. grocery</span></div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-price">
+    <div class="dp-title">Lever 4: Price per unit</div>
+    <div class="dp-rows">
+      <div class="dp-row"><span class="dp-key">What to measure</span><span class="dp-val">Avg realized price per lb</span></div>
+      <div class="dp-row"><span class="dp-key">Estimated baseline</span><span class="dp-val">$25–30/lb retail</span></div>
+      <div class="dp-row"><span class="dp-key">Target for 30% growth</span><span class="dp-val">Hold or grow — no discounting</span></div>
+      <div class="dp-row"><span class="dp-key">Primary data source</span><span class="dp-val">Sell-in + promo depth tracking</span></div>
+      <div class="dp-row"><span class="dp-key">Media implication</span><span class="dp-val">Brand investment justifies premium</span></div>
+      <div class="dp-row"><span class="dp-key">Key sub-metric</span><span class="dp-val">Price gap vs. domestic parmesan</span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="sim-section">
+    <div class="sim-label">Scenario simulator — mix the levers to hit 30%</div>
+    <div class="sim-sliders">
+      <div class="sim-row">
+        <label>New households (%)</label>
+        <input type="range" min="0" max="30" value="10" id="s1" oninput="calcGrowth()">
+        <span class="sim-val" id="s1v">+10%</span>
+      </div>
+      <div class="sim-row">
+        <label>Purchase frequency (%)</label>
+        <input type="range" min="0" max="30" value="10" id="s2" oninput="calcGrowth()">
+        <span class="sim-val" id="s2v">+10%</span>
+      </div>
+      <div class="sim-row">
+        <label>Pack size (%)</label>
+        <input type="range" min="0" max="20" value="5" id="s3" oninput="calcGrowth()">
+        <span class="sim-val" id="s3v">+5%</span>
+      </div>
+      <div class="sim-row">
+        <label>Realized price (%)</label>
+        <input type="range" min="-5" max="10" value="5" id="s4" oninput="calcGrowth()">
+        <span class="sim-val" id="s4v">+5%</span>
+      </div>
+    </div>
+    <div class="result-bar">
+      <div>
+        <div class="result-num" id="res-pct">+32%</div>
+        <div class="result-label">Projected revenue growth</div>
+      </div>
+      <div class="result-breakdown">
+        <div class="rb-row"><span class="rb-key">Households contribution</span><span class="rb-val" id="rb1">+10pp</span></div>
+        <div class="rb-row"><span class="rb-key">Frequency contribution</span><span class="rb-val" id="rb2">+10pp</span></div>
+        <div class="rb-row"><span class="rb-key">Pack size contribution</span><span class="rb-val" id="rb3">+5pp</span></div>
+        <div class="rb-row"><span class="rb-key">Price contribution</span><span class="rb-val" id="rb4">+5pp</span></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:#A9A9A9;">Simplified multiplicative model: growth = (1+h)(1+f)(1+p)(1+pr) − 1. Assumes levers are independent.</div>
+  </div>
+</div>
+<script>
+function showDetail(key) {
+  document.querySelectorAll('.detail-panel').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.lever').forEach(l => l.classList.remove('active'));
+  const panel = document.getElementById('detail-' + key);
+  const leverMap = { penetration: 'l1', frequency: 'l2', basket: 'l3', price: 'l4' };
+  if (panel) panel.classList.add('visible');
+  const lv = document.getElementById(leverMap[key]);
+  if (lv) lv.classList.add('active');
+}
+function calcGrowth() {
+  const s1 = parseInt(document.getElementById('s1').value) / 100;
+  const s2 = parseInt(document.getElementById('s2').value) / 100;
+  const s3 = parseInt(document.getElementById('s3').value) / 100;
+  const s4 = parseInt(document.getElementById('s4').value) / 100;
+  document.getElementById('s1v').textContent = (s1 >= 0 ? '+' : '') + Math.round(s1 * 100) + '%';
+  document.getElementById('s2v').textContent = (s2 >= 0 ? '+' : '') + Math.round(s2 * 100) + '%';
+  document.getElementById('s3v').textContent = (s3 >= 0 ? '+' : '') + Math.round(s3 * 100) + '%';
+  document.getElementById('s4v').textContent = (s4 >= 0 ? '+' : '') + Math.round(s4 * 100) + '%';
+  const total = ((1 + s1) * (1 + s2) * (1 + s3) * (1 + s4) - 1) * 100;
+  document.getElementById('res-pct').textContent = (total >= 0 ? '+' : '') + Math.round(total) + '%';
+  document.getElementById('res-pct').style.color = total >= 29 ? '#e94543' : '#49bdbf';
+  document.getElementById('rb1').textContent = (s1 >= 0 ? '+' : '') + Math.round(s1 * 100) + 'pp';
+  document.getElementById('rb2').textContent = (s2 >= 0 ? '+' : '') + Math.round(s2 * 100) + 'pp';
+  document.getElementById('rb3').textContent = (s3 >= 0 ? '+' : '') + Math.round(s3 * 100) + 'pp';
+  document.getElementById('rb4').textContent = (s4 >= 0 ? '+' : '') + Math.round(s4 * 100) + 'pp';
+}
+calcGrowth();
+</script>
